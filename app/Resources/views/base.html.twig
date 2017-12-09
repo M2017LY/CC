@@ -1,0 +1,115 @@
+{# app/Resources/views/base.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} Assessment{% endblock %} - Assessment</title>
+
+    {% block stylesheets %}
+        {% stylesheets
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css'
+        'css/screen.css'
+        %}
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
+
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{{ asset_url }} " type="text/css" rel="stylesheet"/>
+        {% endstylesheets %}
+    {% endblock %}
+
+    {% block javascript %}
+        {% javascripts
+        'https://code.jquery.com/jquery-3.1.1.min.js'
+        'https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js'
+        'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'
+        'https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js'
+        'jquery-ui-1.12.1.custom/jquery-ui.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }} "></script>
+        {% endjavascripts %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }} "/>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('index') }}">Logo</a>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path('index') }}">Home</a></li>
+                    <li><a href="{{ path('about') }} ">About</a></li>
+
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        {#<li><a href="{{ path('session_index') }} ">Session</a></li>#}
+                        {#<li><a href="{{ path('session_active_session') }} ">Active Session</a></li>#}
+                        {#<li><a href="{{ path('score_index') }} ">Score</a></li>#}
+                        {#<li><a href="{{ path('student_index') }} ">Student</a></li>#}
+                        {#<li><a href="{{ path('team_index') }} ">Team</a></li>#}
+
+                        <a class="link" href="{{ path('fos_user_security_logout') }}">Logout</a>
+                    {% else %}
+                        <a class="link" href="{{ path('fos_user_security_login') }}">Login</a>
+                        <a class="link" href="{{ path('fos_user_registration_register') }}">signup</a>
+                    {% endif %}
+                    {{ app.user.username|default('') }}
+                    <b>
+                    </b>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-xs-12">
+            {% include ('::flash-messages.html.twig') %}
+        </div>
+    </div>
+
+    {% if form is defined %}
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {% endif %}
+    {% if edit_form is defined %}
+        {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+    {% endif %}
+
+    <div class="row">
+
+        <section id="right" class="col-xs-12 col-sm-12 ">
+            {#<section id="right" class="col-xs-12 col-sm-4 ">#}
+            {% block sidebar %}{% endblock %}
+        </section>
+    </div>
+
+    <div class="row">
+        <section id="lift" class="col-xs-12 col-sm-12">
+            {#<section id="lift" class="col-xs-12 col-sm-8">#}
+            {% block container %}{% endblock %}
+            {% block body %}{% endblock %}
+        </section>
+
+    </div>
+
+    {#   <div class="footer">
+           {% block footer %}
+               <p>Peer Assessment</p>
+           {% endblock %}
+       </div>
+     #}
+</div>
+</body>
+</html>

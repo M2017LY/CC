@@ -1,0 +1,89 @@
+#successMessage {
+    position: absolute;
+    left: 580px;
+    top: 250px;
+    width: 0;
+    height: 0;
+    z-index: 100;
+    background: #dfd;
+    border: 2px solid #333;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+    -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+    box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+    padding: 20px;
+}
+
+.form-signin {
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.my-badge {
+    background: #3d802f;
+    color: #fff;
+    padding: 2px 7px;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    z-index: 99;
+    border-radius: .8em;
+    border: 2px solid #fff;
+}
+
+b {
+    font-weight: bold;
+}
+
+
+.box-shadow {
+    box-shadow: 1px 1px 1px 1px ;
+}
+
+
+.box-shadow-1 {
+    box-shadow: 1px 1px 1px ;
+    padding: 15px;
+}
+
+.box-shadow-2 {
+    box-shadow: 1px 7px  10px 1px ;
+    padding: 25px;
+}
+
+.box-shadow-3 {
+    box-shadow: 1px 1px 11px 1px ;
+    padding: 12px;
+}
+
+.btn-circle {
+    text-align: center;
+    color: #49ab38;
+}
+
+.red-card {
+    color: #ff2f3b;
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: 1.5em;
+}
+
+.green-card {
+    color: #59e32d;
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: 1.5em;
+}
+
+
+.btn-circle-1 {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 1px 0;
+    line-height: 1.42;
+    border-radius: 15px;
+    color: #49ab38;
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: 1.5em;
+}

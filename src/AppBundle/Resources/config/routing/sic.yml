@@ -1,0 +1,24 @@
+sic_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Sic:index" }
+    methods:  GET
+
+sic_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Sic:show" }
+    methods:  GET
+
+sic_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Sic:new" }
+    methods:  [GET, POST]
+
+sic_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Sic:edit" }
+    methods:  [GET, POST]
+
+sic_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Sic:delete" }
+    methods:  DELETE

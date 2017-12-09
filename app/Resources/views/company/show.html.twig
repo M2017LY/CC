@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Company</h1>
+
+    <table class="table table-bordered table-hover myTable1 js-score-log-table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ company.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ company.name }}</td>
+            </tr>
+            <tr>
+                <th>Registrationno</th>
+                <td>{{ company.registrationNo }}</td>
+            </tr>
+            <tr>
+                <th>Incorporated</th>
+                <td>{% if company.incorporated %}{{ company.incorporated|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Address1</th>
+                <td>{{ company.address1 }}</td>
+            </tr>
+            <tr>
+                <th>Address2</th>
+                <td>{{ company.address2 }}</td>
+            </tr>
+            <tr>
+                <th>Address3</th>
+                <td>{{ company.address3 }}</td>
+            </tr>
+            <tr>
+                <th>Postcode</th>
+                <td>{{ company.postcode }}</td>
+            </tr>
+            <tr>
+                <th>Address4</th>
+                <td>{{ company.address4 }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ company.type }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ company.status }}</td>
+            </tr>
+            <tr>
+                <th>Accountsdate</th>
+                <td>{% if company.accountsDate %}{{ company.accountsDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Accountsdue</th>
+                <td>{% if company.accountsDue %}{{ company.accountsDue|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Confirmation</th>
+                <td>{% if company.confirmation %}{{ company.confirmation|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Confirmationdue</th>
+                <td>{% if company.confirmationDue %}{{ company.confirmationDue|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ company.comment }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('company_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('company_edit', { 'id': company.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

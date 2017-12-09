@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sics list</h1>
+
+   <table class="table table-bordered table-hover myTable1 js-score-log-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Sic</th>
+                <th>Ditail</th>
+                <th>Company</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sic in sics %}
+            <tr>
+                <td><a href="{{ path('sic_show', { 'id': sic.id }) }}">{{ sic.id }}</a></td>
+                <td>{{ sic.sic }}</td>
+                <td>{{ sic.ditail }}</td>
+                <td>{{ sic.company }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('sic_show', { 'id': sic.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('sic_edit', { 'id': sic.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sic_new') }}">Create a new sic</a>
+        </li>
+    </ul>
+{% endblock %}

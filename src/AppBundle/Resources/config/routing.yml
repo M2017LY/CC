@@ -1,0 +1,23 @@
+app_company:
+    resource: "@AppBundle/Resources/config/routing/company.yml"
+    prefix:   /company
+
+app_client:
+    resource: "@AppBundle/Resources/config/routing/client.yml"
+    prefix:   /client
+
+app_sic:
+    resource: "@AppBundle/Resources/config/routing/sic.yml"
+    prefix:   /sic
+
+
+index:
+    path:     /
+    defaults: { _controller: AppBundle:Page:index }
+
+about:
+    path:     /about
+    defaults: { _controller: AppBundle:Page:about }
+    requirements:
+        _method : GET
+

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sic</h1>
+
+    <table class="table table-bordered table-hover myTable1 js-score-log-table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sic.id }}</td>
+            </tr>
+            <tr>
+                <th>Sic</th>
+                <td>{{ sic.sic }}</td>
+            </tr>
+            <tr>
+                <th>Ditail</th>
+                <td>{{ sic.ditail }}</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td>{{ sic.company }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sic_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('sic_edit', { 'id': sic.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

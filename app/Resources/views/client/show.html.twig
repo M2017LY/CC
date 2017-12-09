@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Client</h1>
+
+    <table class="table table-bordered table-hover myTable1 js-score-log-table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ client.id }}</td>
+            </tr>
+            <tr>
+                <th>Fname</th>
+                <td>{{ client.fName }}</td>
+            </tr>
+            <tr>
+                <th>Lname</th>
+                <td>{{ client.lName }}</td>
+            </tr>
+            <tr>
+                <th>Mobile</th>
+                <td>{{ client.mobile }}</td>
+            </tr>
+            <tr>
+                <th>Landline</th>
+                <td>{{ client.landline }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ client.email }}</td>
+            </tr>
+            <tr>
+                <th>Address1</th>
+                <td>{{ client.address1 }}</td>
+            </tr>
+            <tr>
+                <th>Address2</th>
+                <td>{{ client.address2 }}</td>
+            </tr>
+            <tr>
+                <th>Address3</th>
+                <td>{{ client.address3 }}</td>
+            </tr>
+            <tr>
+                <th>Address4</th>
+                <td>{{ client.address4 }}</td>
+            </tr>
+            <tr>
+                <th>Postcode</th>
+                <td>{{ client.postcode }}</td>
+            </tr>
+            <tr>
+                <th>Dateofbirth</th>
+                <td>{% if client.dateofbirth %}{{ client.dateofbirth|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nationality</th>
+                <td>{{ client.nationality }}</td>
+            </tr>
+            <tr>
+                <th>Email2</th>
+                <td>{{ client.email2 }}</td>
+            </tr>
+            <tr>
+                <th>Email3</th>
+                <td>{{ client.email3 }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ client.comment }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('client_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('client_edit', { 'id': client.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
