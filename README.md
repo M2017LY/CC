@@ -1,2 +1,0 @@
-# cc
-first work project
