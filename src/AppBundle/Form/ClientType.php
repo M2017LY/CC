@@ -13,7 +13,21 @@ class ClientType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('fName')->add('lName')->add('mobile')->add('landline')->add('email')->add('address1')->add('address2')->add('address3')->add('address4')->add('postcode')->add('dateofbirth')->add('nationality')->add('email2')->add('email3')->add('comment');
+        $builder->add('fName')
+                ->add('lName')
+                ->add('mobile')
+                ->add('landline')
+                ->add('email')
+                ->add('address1')
+                ->add('address2')
+                ->add('address3')
+                ->add('address4')
+                ->add('postcode')
+                ->add('dateofbirth')
+                ->add('nationality')
+                ->add('email2')
+                ->add('email3')
+                ->add('comment');
     }
     
     /**

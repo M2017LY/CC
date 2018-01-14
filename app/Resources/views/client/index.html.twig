@@ -3,25 +3,29 @@
 {% block body %}
     <h1>Clients list</h1>
 
-    <table class="table table-bordered table-hover myTable1 js-score-log-table">
+    <table  class="table table-bordered table-hover myTable">
         <thead>
-            <tr>
+        <tr bgcolor="#add8e6">
+
+    {#<table class="table table-bordered table-hover myTable1 js-score-log-table">#}
+        {#<thead>#}
+            {#<tr>#}
                 <th>Id</th>
                 <th>Fname</th>
                 <th>Lname</th>
                 <th>Mobile</th>
-                <th>Landline</th>
+                {#<th>Landline</th>#}
                 <th>Email</th>
-                <th>Address1</th>
-                <th>Address2</th>
-                <th>Address3</th>
-                <th>Address4</th>
-                <th>Postcode</th>
-                <th>Dateofbirth</th>
-                <th>Nationality</th>
-                <th>Email2</th>
-                <th>Email3</th>
-                <th>Comment</th>
+                {#<th>Address1</th>#}
+                {#<th>Address2</th>#}
+                {#<th>Address3</th>#}
+                {#<th>Address4</th>#}
+                {#<th>Postcode</th>#}
+                {#<th>Dateofbirth</th>#}
+                {#<th>Nationality</th>#}
+                {#<th>Email2</th>#}
+                {#<th>Email3</th>#}
+                {#<th>Comment</th>#}
                 <th>Actions</th>
             </tr>
         </thead>
@@ -32,18 +36,18 @@
                 <td>{{ client.fName }}</td>
                 <td>{{ client.lName }}</td>
                 <td>{{ client.mobile }}</td>
-                <td>{{ client.landline }}</td>
+                {#<td>{{ client.landline }}</td>#}
                 <td>{{ client.email }}</td>
-                <td>{{ client.address1 }}</td>
-                <td>{{ client.address2 }}</td>
-                <td>{{ client.address3 }}</td>
-                <td>{{ client.address4 }}</td>
-                <td>{{ client.postcode }}</td>
-                <td>{% if client.dateofbirth %}{{ client.dateofbirth|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ client.nationality }}</td>
-                <td>{{ client.email2 }}</td>
-                <td>{{ client.email3 }}</td>
-                <td>{{ client.comment }}</td>
+                {#<td>{{ client.address1 }}</td>#}
+                {#<td>{{ client.address2 }}</td>#}
+                {#<td>{{ client.address3 }}</td>#}
+                {#<td>{{ client.address4 }}</td>#}
+                {#<td>{{ client.postcode }}</td>#}
+                {#<td>{% if client.dateofbirth %}{{ client.dateofbirth|date('Y-m-d') }}{% endif %}</td>#}
+                {#<td>{{ client.nationality }}</td>#}
+                {#<td>{{ client.email2 }}</td>#}
+                {#<td>{{ client.email3 }}</td>#}
+                {#<td>{{ client.comment }}</td>#}
                 <td>
                     <ul>
                         <li>

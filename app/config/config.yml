@@ -61,12 +61,43 @@ doctrine:
         auto_mapping: true
 
 # Swiftmailer Configuration
+#swiftmailer:
+#    transport: '%mailer_transport%'
+#    host: '%mailer_host%'
+#    username: '%mailer_user%'
+#    password: '%mailer_password%'
+#    spool: { type: memory }
+
+# Swiftmailer Configuration
 swiftmailer:
-    transport: '%mailer_transport%'
+    transport: smtp
     host: '%mailer_host%'
-    username: '%mailer_user%'
-    password: '%mailer_password%'
-    spool: { type: memory }
+    port: 587
+    encryption: tls
+    username:  '%mailer_user%'
+    password:  '%mailer_password%'
+    stream_options:
+        ssl:
+            verify_peer: false
+            verify_peer_name: false
+#    spool: { type: memory }
+
+#//////////////////////////////////////
+# Swiftmailer Configuration
+#swiftmailer:
+#    transport: smtp
+#    host: '%mailer_host%'
+#    port: 587
+#    encryption: tls
+#    username:  '%mailer_user%'
+#    password:  '%mailer_password%'
+#    stream_options:
+#        ssl:
+#            verify_peer: false
+#            verify_peer_name: false
+
+
+
 
 
 assetic:
@@ -87,10 +118,10 @@ fos_user:
         confirmation:
             from_email:
                 address: "mohamed@sjp11.co.uk"
-                sender_name:   "No registration"
-            enabled:    false # change to true to enable registration email confirmation
+                sender_name:   "registration"
+            enabled:    true # change to true to enable registration email confirmation
     resetting:
         email:
             from_email:
                 address: "mohamed@sjp11.co.uk"
-                sender_name: "No Reply"
+                sender_name: "No Reply resetting"

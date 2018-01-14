@@ -3,15 +3,26 @@
 
 - hosts: vb
 
-  vars:
-    server_name: sjp100.com
-    symfony_root_dir: /var/www/project
-    symfony_web_dir: "{{ symfony_root_dir }}/web"
-    symfony_var_dir: "{{ symfony_root_dir }}/var"
-    symfony_console_path: "{{ symfony_root_dir }}/bin/console"
+  vars_files:
+#    - ./vars/vault.yml
+    - ./vars/vars.yml
 
-  tasks:
-    - ping: ~
+  vars_prompt:
+    - name: symfony_env
+      prompt: "Enter the environment for your Symfony app (prod|dev|test)"
+      default: prod
+      private: no
+
+  environment:
+    SYMFONY_ENV: "{{ symfony_env|lower }}"
+
+  pre_tasks:
+
+    - name: Convert entered Symfony environment to lowercase
+      set_fact:
+        symfony_env: "{{ symfony_env|lower }}"
+      tags:
+        - always
 
     - name: Update APT package manager repositories cache
       become: true
@@ -22,6 +33,16 @@
       become: true
       apt:
         upgrade: safe
+
+
+  roles:
+    - nginx
+
+    - role: DavidWittman.redis
+      become: true
+
+  tasks:
+    - ping: ~
 
     - name: Install low-level utilities
       become: true
@@ -36,12 +57,6 @@
       become: true
       apt:
         name: git
-        state: latest
-
-    - name: Install Nginx web server
-      become: true
-      apt:
-        name: nginx
         state: latest
 
     - name: Install MYSQL DB server
@@ -94,88 +109,74 @@
         owner: "{{ ansible_user }}"
         group: "{{ ansible_user }}"
         recurse: yes
+      tags:
+        - deploy
 
     - name: Checkout Git repository
       git:
         repo: https://github.com/M2017LY/CC.git
         dest: "{{ symfony_root_dir }}"
         force: yes
-      notify: Restart PHP-FPM
-      notify: Restart Nginx
+      register: repo_code
+      tags:
+        - deploy
 
-    - name: Install cowsay - it's probably important
-      apt:
-        name: cowsay
-      become: true
-      apt:
-        name: cowsay
+    - name: Register code_changed variable
+      set_fact:
+        code_changed: repo_code.changed
+      tags:
+        - deploy
+
+
+    - name: Check for Composer
+      stat:
+        path: /usr/local/bin/composer
+      register: composer_stat
+      tags:
+        - deploy
+
+#    - debug:
+#        var: composer_stat
+#      tags:
+#        - deploy
 
     - name: Download Composer
       script: scripts/install_composer.sh
+      when: not composer_stat.stat.exists
+
+      tags:
+        - deploy
 
     - name: Move Composer globally
       become: true
       command: mv composer.phar /usr/local/bin/composer
+      when: not composer_stat.stat.exists
+      tags:
+        - deploy
 
     - name: Set permissions on Composer
       become: true
       file:
         path: /usr/local/bin/composer
         mode: "a+x"
+      when: not composer_stat.stat.exists
+      tags:
+        - deploy
 
-    - name: Install Composer's dependencies
+    - name: Make sure composer is at its latest version
       composer:
         working_dir: "{{ symfony_root_dir }}"
-        no_dev: no
+        command: self-update
+      when: not composer_stat.stat.exists
+      register: composer_self_update
+      changed_when: "not composer_self_update.stdout|search('You are already using composer version')"
+      tags:
+        - deploy
 
-    - name: Add Symfony config template to the Nginx available sites
-      become: true
-      template:
-        src: templates/symfony.conf
-        dest: "/etc/nginx/sites-available/{{ server_name }}.conf"
-      notify: Restart Nginx
-
-    - name: Enable Symfony config template from Nginx available sites
-      become: true
-      file:
-        src: "/etc/nginx/sites-available/{{ server_name }}.conf"
-        dest: "/etc/nginx/sites-enabled/{{ server_name }}.conf"
-        state: link
-      notify: Restart Nginx
-
-    - name: Add enabled Nginx site to /etc/hosts
-      become: true
-      lineinfile:
-        dest: /etc/hosts
-        regexp: "{{ server_name }}"
-        line: "127.0.0.1 {{ server_name }}"
-
-    - name: Fix var directory permissions
-      file:
-        path: "{{ symfony_var_dir }}"
-        state: directory
-        mode: 0777
-        recurse: yes
-
-    # Symfony console commands
-    - name: Create DB if not exists
-      command: '{{ symfony_console_path }} doctrine:database:create --if-not-exists'
-
-#    - name: Execute migrations
-#      command: '{{ symfony_console_path }} doctrine:migrations:migrate --no-interaction'
-#
-#    - name: Load data fixtures
-#      command: '{{ symfony_console_path }} hautelook_alice:doctrine:fixtures:load --no-interaction'
-
-    - name: Clear cache
-      command: '{{ symfony_console_path }} cache:clear --env=prod'
+    # Bootstrap Symfony app
+    - include: ./includes/symfony-bootstrap.yml
 
   handlers:
-    - name: Restart Nginx
-      become: true
-      service:
-        name: nginx
-        state: restarted
 
     - name: Restart PHP-FPM
       become: true

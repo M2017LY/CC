@@ -13,7 +13,21 @@ class CompanyType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('registrationNo')->add('incorporated')->add('address1')->add('address2')->add('address3')->add('postcode')->add('address4')->add('type')->add('status')->add('accountsDate')->add('accountsDue')->add('confirmation')->add('confirmationDue')->add('comment');
+        $builder->add('name')
+                ->add('registrationNo')
+                ->add('incorporated')
+                ->add('address1')
+                ->add('address2')
+                ->add('address3')
+                ->add('postcode')
+                ->add('address4')
+                ->add('type')
+                ->add('status')
+                ->add('accountsDate')
+                ->add('accountsDue')
+                ->add('confirmation')
+                ->add('confirmationDue')
+                ->add('comment');
     }
     
     /**

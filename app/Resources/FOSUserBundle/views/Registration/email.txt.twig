@@ -10,10 +10,11 @@
 
 Hello {{ user.username }} !
 
-You can reset your password by accessing {{ confirmationUrl }}
-
 Greetings,
-Peer Assessment team
+
+Thank you for joining our organisation
+
+Mohamed Friqita
 
 {{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
 {% endautoescape %}

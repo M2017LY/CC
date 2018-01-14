@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CompanyController extends Controller
 {
+
+
     /**
      * Lists all company entities.
      *
@@ -26,6 +28,32 @@ class CompanyController extends Controller
             'companies' => $companies,
         ));
     }
+
+    public function sendEmail($name, \Swift_Mailer $mailer)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $companies = $em->getRepository('AppBundle:Company')->findAll();
+
+        $message = (new \Swift_Message('Hello Email'))
+            ->setFrom('mohamed@sjp11.co.uk')
+            ->setTo('m_efrigta@yahoo.com')
+            ->setBody('You should see me from the profiler!')
+        ;
+
+        $mailer->send($message);
+
+        return $this->render('company/index.html.twig', array(
+            'companies' => $companies,
+        ));
+
+    }
+
+
+
+
+
 
     /**
      * Creates a new company entity.

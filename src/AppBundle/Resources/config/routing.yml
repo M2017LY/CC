@@ -1,3 +1,7 @@
+app_search:
+    resource: "@AppBundle/Resources/config/routing/search.yml"
+    prefix:   /search
+
 app_company:
     resource: "@AppBundle/Resources/config/routing/company.yml"
     prefix:   /company

@@ -3,26 +3,29 @@
 {% block body %}
     <h1>Companies list</h1>
 
-    <table class="table table-bordered table-hover myTable1 js-score-log-table">
+    <table  class="table table-bordered table-hover myTable">
         <thead>
-            <tr>
+        <tr bgcolor="#add8e6">
+    {#<table class="table table-bordered table-hover myTable1 js-score-log-table">#}
+        {#<thead>#}
+            {#<tr>#}
                 <th>Id</th>
                 <th>Name</th>
                 <th>Registrationno</th>
                 <th>Incorporated</th>
-                <th>Address1</th>
-                <th>Address2</th>
-                <th>Address3</th>
-                <th>Postcode</th>
-                <th>Address4</th>
-                <th>Type</th>
+                {#<th>Address1</th>#}
+                {#<th>Address2</th>#}
+                {#<th>Address3</th>#}
+                {#<th>Postcode</th>#}
+                {#<th>Address4</th>#}
+                {#<th>Type</th>#}
                 <th>Status</th>
-                <th>Accountsdate</th>
+                {#<th>Accountsdate</th>#}
                 <th>Accountsdue</th>
-                <th>Confirmation</th>
+                {#<th>Confirmation</th>#}
                 <th>Confirmationdue</th>
-                <th>Comment</th>
-                <th>Actions</th>
+                {#<th>Comment</th>#}
+                {#<th>Actions</th>#}
             </tr>
         </thead>
         <tbody>
@@ -32,28 +35,28 @@
                 <td>{{ company.name }}</td>
                 <td>{{ company.registrationNo }}</td>
                 <td>{% if company.incorporated %}{{ company.incorporated|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ company.address1 }}</td>
-                <td>{{ company.address2 }}</td>
-                <td>{{ company.address3 }}</td>
-                <td>{{ company.postcode }}</td>
-                <td>{{ company.address4 }}</td>
-                <td>{{ company.type }}</td>
+                {#<td>{{ company.address1 }}</td>#}
+                {#<td>{{ company.address2 }}</td>#}
+                {#<td>{{ company.address3 }}</td>#}
+                {#<td>{{ company.postcode }}</td>#}
+                {#<td>{{ company.address4 }}</td>#}
+                {#<td>{{ company.type }}</td>#}
                 <td>{{ company.status }}</td>
-                <td>{% if company.accountsDate %}{{ company.accountsDate|date('Y-m-d') }}{% endif %}</td>
+                {#<td>{% if company.accountsDate %}{{ company.accountsDate|date('Y-m-d') }}{% endif %}</td>#}
                 <td>{% if company.accountsDue %}{{ company.accountsDue|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if company.confirmation %}{{ company.confirmation|date('Y-m-d') }}{% endif %}</td>
+                {#<td>{% if company.confirmation %}{{ company.confirmation|date('Y-m-d') }}{% endif %}</td>#}
                 <td>{% if company.confirmationDue %}{{ company.confirmationDue|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ company.comment }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('company_show', { 'id': company.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('company_edit', { 'id': company.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                {#<td>{{ company.comment }}</td>#}
+                {#<td>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('company_show', { 'id': company.id }) }}">show</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('company_edit', { 'id': company.id }) }}">edit</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</td>#}
             </tr>
         {% endfor %}
         </tbody>
@@ -62,6 +65,12 @@
     <ul>
         <li>
             <a href="{{ path('company_new') }}">Create a new company</a>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            {#<a href="{{ path('company_email') }}">Create a new email</a>#}
         </li>
     </ul>
 {% endblock %}

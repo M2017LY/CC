@@ -22,3 +22,8 @@ company_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Company:delete" }
     methods:  DELETE
+
+#company_email:
+#    path:     /
+#    defaults: { _controller: "AppBundle:Company:email" }
+#    methods:  [GET, POST]

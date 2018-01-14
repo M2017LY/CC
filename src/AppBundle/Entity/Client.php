@@ -45,14 +45,14 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="landline", type="string", length=15)
+     * @ORM\Column(name="landline", type="string", length=15, nullable=true)
      */
     private $landline;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=50)
+     * @ORM\Column(name="email", type="string", length=50 )
      */
     private $email;
 
@@ -66,21 +66,21 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="address2", type="string", length=50)
+     * @ORM\Column(name="address2", type="string", length=50, nullable=true)
      */
     private $address2;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address3", type="string", length=255)
+     * @ORM\Column(name="address3", type="string", length=255, nullable=true)
      */
     private $address3;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address4", type="string", length=50)
+     * @ORM\Column(name="address4", type="string", length=50, nullable=true)
      */
     private $address4;
 
@@ -94,35 +94,35 @@ class Client
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateofbirth", type="date")
+     * @ORM\Column(name="dateofbirth", type="date", nullable=true)
      */
     private $dateofbirth;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nationality", type="string", length=50)
+     * @ORM\Column(name="nationality", type="string", length=50, nullable=true)
      */
     private $nationality;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email2", type="string", length=50)
+     * @ORM\Column(name="email2", type="string", length=50, nullable=true)
      */
     private $email2;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email3", type="string", length=50)
+     * @ORM\Column(name="email3", type="string", length=50, nullable=true)
      */
     private $email3;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="comment", type="text")
+     * @ORM\Column(name="comment", type="text", nullable=true)
      */
     private $comment;
 

@@ -54,9 +54,10 @@
                     <li><a href="{{ path('index') }}">Home</a></li>
                     <li><a href="{{ path('about') }} ">About</a></li>
 
+                    <li><a href="{{ path('company_index') }} ">Company</a></li>
+                    <li><a href="{{ path('client_index') }} ">Client</a></li>
+
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                        {#<li><a href="{{ path('session_index') }} ">Session</a></li>#}
-                        {#<li><a href="{{ path('session_active_session') }} ">Active Session</a></li>#}
                         {#<li><a href="{{ path('score_index') }} ">Score</a></li>#}
                         {#<li><a href="{{ path('student_index') }} ">Student</a></li>#}
                         {#<li><a href="{{ path('team_index') }} ">Team</a></li>#}
