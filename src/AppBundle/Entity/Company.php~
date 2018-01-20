@@ -52,14 +52,14 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="address2", type="string", length=50)
+     * @ORM\Column(name="address2", type="string", length=50, nullable=true)
      */
     private $address2;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address3", type="string", length=50)
+     * @ORM\Column(name="address3", type="string", length=50, nullable=true)
      */
     private $address3;
 
@@ -73,21 +73,21 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="address4", type="string", length=50)
+     * @ORM\Column(name="address4", type="string", length=50, nullable=true)
      */
     private $address4;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=100)
+     * @ORM\Column(name="type", type="string", length=100, nullable=true)
      */
     private $type;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=100)
+     * @ORM\Column(name="status", type="string", length=100, nullable=true)
      */
     private $status;
 
@@ -122,9 +122,46 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="comment", type="text")
+     * @ORM\Column(name="comment", type="text", nullable=true)
      */
     private $comment;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dfName", type="string", length=20)
+     */
+    private $dfName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dlName", type="string", length=30)
+     */
+    private $dlName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mobile", type="string", length=15)
+     */
+    private $mobile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="landline", type="string", length=15, nullable=true)
+     */
+    private $landline;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=50 )
+     */
+    private $email;
+
 
 
     /**
@@ -496,5 +533,124 @@ class Company
     {
         return $this->comment;
     }
-}
 
+    /**
+     * Set dfName
+     *
+     * @param string $dfName
+     *
+     * @return Company
+     */
+    public function setDfName($dfName)
+    {
+        $this->dfName = $dfName;
+
+        return $this;
+    }
+
+    /**
+     * Get dfName
+     *
+     * @return string
+     */
+    public function getDfName()
+    {
+        return $this->dfName;
+    }
+
+    /**
+     * Set dlName
+     *
+     * @param string $dlName
+     *
+     * @return Company
+     */
+    public function setDlName($dlName)
+    {
+        $this->dlName = $dlName;
+
+        return $this;
+    }
+
+    /**
+     * Get dlName
+     *
+     * @return string
+     */
+    public function getDlName()
+    {
+        return $this->dlName;
+    }
+
+    /**
+     * Set mobile
+     *
+     * @param string $mobile
+     *
+     * @return Company
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * Get mobile
+     *
+     * @return string
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * Set landline
+     *
+     * @param string $landline
+     *
+     * @return Company
+     */
+    public function setLandline($landline)
+    {
+        $this->landline = $landline;
+
+        return $this;
+    }
+
+    /**
+     * Get landline
+     *
+     * @return string
+     */
+    public function getLandline()
+    {
+        return $this->landline;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Company
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+}

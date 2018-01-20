@@ -1,0 +1,24 @@
+search_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Search:index" }
+    methods:  GET
+
+search_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Search:show" }
+    methods:  GET
+
+search_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Search:new" }
+    methods:  [GET, POST]
+
+search_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Search:edit" }
+    methods:  [GET, POST]
+
+search_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Search:delete" }
+    methods:  DELETE

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Searches list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Query</th>
+                <th>Query1</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for search in searches %}
+            <tr>
+                <td><a href="{{ path('search_show', { 'id': search.id }) }}">{{ search.id }}</a></td>
+                <td>{{ search.query }}</td>
+                <td>{{ search.query1 }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('search_show', { 'id': search.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('search_edit', { 'id': search.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('search_new') }}">Create a new search</a>
+        </li>
+    </ul>
+{% endblock %}
